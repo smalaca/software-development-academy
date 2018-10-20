@@ -1,16 +1,18 @@
 package com.smalaca.wordcounter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WordCounter {
-    private List<String> words = new ArrayList<>();
+    private static final int NO_WORD_ACCEPTED = 0;
+
+    private final Map<String, Integer> words = new HashMap<>();
 
     public int count(String word) {
-        return (int) words.stream().filter(word::equals).count();
+        return words.getOrDefault(word, NO_WORD_ACCEPTED);
     }
 
     public void accept(String word) {
-        words.add(word);
+        words.put(word, count(word) + 1);
     }
 }
