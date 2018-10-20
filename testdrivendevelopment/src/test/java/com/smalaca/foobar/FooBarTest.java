@@ -36,4 +36,16 @@ public class FooBarTest {
         //then
         Assert.assertEquals("Foo", result);
     }
+
+    @Test
+    public void shouldReturnStringBarWhenIntIsDividableByFive() {
+        //given
+        int number = 15;
+
+        //when
+        String result = fooBar.convertToString(number);
+
+        //then
+        Assert.assertEquals("Bar", result);
+    }
 }
