@@ -8,8 +8,8 @@ public class FooBarTest {
     private static final int NUMBER = 1;
     private static final String EXPECTED_REPRESENTATION = "1";
     private static final int DIVIDABLE_BY_THREE = 3;
-    private static final int DIVIDABLE_BY_FIVE = 15;
-    private static final int DIVIDABLE_BY_FIFTEEN = 15;
+    private static final int DIVIDABLE_BY_FIVE = 5;
+    private static final int DIVIDABLE_BY_FIFTEEN = 30;
     private FooBar fooBar;
 
     @Before
