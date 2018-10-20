@@ -17,4 +17,16 @@ public class FooBarTest {
         //then
         Assert.assertEquals(EXPECTED_REPRESENTATION, result);
     }
+
+    @Test
+    public void shouldReturnStringFooWhenIntIsDividableByThree() {
+        //given
+        int number = 3;
+
+        //when
+        String result = new FooBar().convertToString(number);
+
+        //then
+        Assert.assertEquals("Foo", result);
+    }
 }
