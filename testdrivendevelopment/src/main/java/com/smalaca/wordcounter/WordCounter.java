@@ -1,13 +1,13 @@
 package com.smalaca.wordcounter;
 
 public class WordCounter {
-    private boolean accepted;
+    private int counter;
 
     public int count(String word) {
-        return accepted ? 1 : 0;
+        return counter;
     }
 
     public void accept(String word) {
-        accepted = true;
+        counter++;
     }
 }

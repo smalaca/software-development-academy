@@ -23,4 +23,15 @@ public class WordCounterTest {
 
         assertEquals(1, result);
     }
+
+    @Test
+    public void shouldRecognizeWhenWordWasGivenMultipleTimes() {
+        WordCounter wordCounter = new WordCounter();
+        wordCounter.accept(WORD);
+        wordCounter.accept(WORD);
+
+        int result = wordCounter.count(WORD);
+
+        assertEquals(2, result);
+    }
 }
