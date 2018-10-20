@@ -8,6 +8,7 @@ public class FooBarTest {
     private static final int NUMBER = 1;
     private static final String EXPECTED_REPRESENTATION = "1";
     private static final int DIVIDABLE_BY_THREE = 3;
+    private static final int DIVIDABLE_BY_FIVE = 15;
     private FooBar fooBar;
 
     @Before
@@ -40,10 +41,9 @@ public class FooBarTest {
     @Test
     public void shouldReturnStringBarWhenIntIsDividableByFive() {
         //given
-        int number = 15;
 
         //when
-        String result = fooBar.convertToString(number);
+        String result = fooBar.convertToString(DIVIDABLE_BY_FIVE);
 
         //then
         Assert.assertEquals("Bar", result);
