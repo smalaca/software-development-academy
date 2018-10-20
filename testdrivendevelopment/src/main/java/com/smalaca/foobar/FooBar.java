@@ -1,7 +1,7 @@
 package com.smalaca.foobar;
 
 class FooBar {
-    public String convertToString(int x) {
-        return String.valueOf(x);
+    String convertToString(int number) {
+        return String.valueOf(number);
     }
 }

@@ -4,15 +4,17 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class FooBarTest {
+    private static final int NUMBER = 1;
+    private static final String EXPECTED_REPRESENTATION = "1";
+
     @Test
     public void shouldReturnStringIntRepresentationWhenPutInt() {
         //given
-        int x = 1;
-        
+
         //when
-        String z = new FooBar().convertToString(x);
+        String result = new FooBar().convertToString(NUMBER);
 
         //then
-        Assert.assertEquals("1", z);
+        Assert.assertEquals(EXPECTED_REPRESENTATION, result);
     }
 }
