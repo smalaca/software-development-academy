@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class WordCounterTest {
     private static final String WORD = "word";
+    private static final String DIFFERENT_WORD = "different word";
 
     @Test
     public void shouldRecognizeThatGivenWordWasNeverAccepted() {
@@ -29,6 +30,18 @@ public class WordCounterTest {
         WordCounter wordCounter = new WordCounter();
         wordCounter.accept(WORD);
         wordCounter.accept(WORD);
+
+        int result = wordCounter.count(WORD);
+
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void shouldCountWordsWhenManyWordsGiven() {
+        WordCounter wordCounter = new WordCounter();
+        wordCounter.accept(WORD);
+        wordCounter.accept(WORD);
+        wordCounter.accept(DIFFERENT_WORD);
 
         int result = wordCounter.count(WORD);
 

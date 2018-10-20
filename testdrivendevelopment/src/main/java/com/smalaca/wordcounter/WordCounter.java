@@ -1,13 +1,16 @@
 package com.smalaca.wordcounter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WordCounter {
-    private int counter;
+    private List<String> words = new ArrayList<>();
 
     public int count(String word) {
-        return counter;
+        return (int) words.stream().filter(word::equals).count();
     }
 
     public void accept(String word) {
-        counter++;
+        words.add(word);
     }
 }
