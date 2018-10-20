@@ -9,6 +9,7 @@ public class FooBarTest {
     private static final String EXPECTED_REPRESENTATION = "1";
     private static final int DIVIDABLE_BY_THREE = 3;
     private static final int DIVIDABLE_BY_FIVE = 15;
+    private static final int DIVIDABLE_BY_FIFTEEN = 15;
     private FooBar fooBar;
 
     @Before
@@ -48,4 +49,16 @@ public class FooBarTest {
         //then
         Assert.assertEquals("Bar", result);
     }
+
+    @Test
+    public void shouldReturnStringFooBarWhenIntIsDividableByFifteen() {
+        //given
+
+        //when
+        String result = fooBar.convertToString(DIVIDABLE_BY_FIFTEEN);
+
+        //then
+        Assert.assertEquals("FooBar", result);
+    }
+
 }
