@@ -13,4 +13,14 @@ public class WordCounterTest {
 
         assertEquals(0, result);
     }
+
+    @Test
+    public void shouldRecognizeWhenWordWasGiven() {
+        WordCounter wordCounter = new WordCounter();
+        wordCounter.accept(WORD);
+
+        int result = wordCounter.count(WORD);
+
+        assertEquals(1, result);
+    }
 }
