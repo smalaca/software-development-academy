@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TestsSuiteTest {
+    private static final TestScenario TEST_SCENARIO = new TestScenario();
+    private static final Author AUTHOR = new Author();
     private TestsSuite testsSuite;
     private Map<Author, TestScenario> testScenarios;
     private AuthorAccess authorAccess;
@@ -27,29 +29,25 @@ public class TestsSuiteTest {
     @Test
     public void shouldAddTestScenario() {
         //given
-        TestScenario testScenario = new TestScenario();
-        Author author = new Author();
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
 
         //when
-        testsSuite.add(testScenario, author);
+        testsSuite.add(TEST_SCENARIO, AUTHOR);
 
         //then
-        Assert.assertTrue(testScenarios.containsKey(author));
-        Assert.assertTrue(testScenarios.containsValue(testScenario));
+        Assert.assertTrue(testScenarios.containsKey(AUTHOR));
+        Assert.assertTrue(testScenarios.containsValue(TEST_SCENARIO));
     }
 
     @Test
     public void shouldNotAddTestScenarioWhenAuthorHasNoPrivileges() {
         //given
-        TestScenario testScenario = new TestScenario();
-        Author author = new Author();
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
 
         //when
-        testsSuite.add(testScenario, author);
+        testsSuite.add(TEST_SCENARIO, AUTHOR);
 
         //then
         Assert.assertTrue(testScenarios.isEmpty());
