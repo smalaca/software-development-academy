@@ -14,18 +14,16 @@ public class TestsSuiteTest {
     @Test
     public void shouldAddTestScenario() {
         //given
-        //given correct test scenario
-        TestScenario testScenario = new TestScenario();
         TestScenarioValidator validator = Mockito.mock(TestScenarioValidator.class);
-        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
-        //given author with priviliges
         AuthorAccess authorAccess = Mockito.mock(AuthorAccess.class);
-        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
-        Author author = new Author();
-        //given map to store scenarios and authors
         Map<Author, TestScenario> testScenarios = new HashMap<>();
-        //given tests suite
         TestsSuite testsSuite = new TestsSuite(validator, authorAccess, testScenarios);
+
+        TestScenario testScenario = new TestScenario();
+        Author author = new Author();
+
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
 
         //when
         testsSuite.add(testScenario, author);
@@ -38,18 +36,16 @@ public class TestsSuiteTest {
     @Test
     public void shouldNotAddTestScenarioWhenAuthorHasNoPrivileges() {
         //given
-        //given correct test scenario
-        TestScenario testScenario = new TestScenario();
         TestScenarioValidator validator = Mockito.mock(TestScenarioValidator.class);
-        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
-        //given author with priviliges
         AuthorAccess authorAccess = Mockito.mock(AuthorAccess.class);
-        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
-        Author author = new Author();
-        //given map to store scenarios and authors
         Map<Author, TestScenario> testScenarios = new HashMap<>();
-        //given tests suite
         TestsSuite testsSuite = new TestsSuite(validator, authorAccess, testScenarios);
+
+        TestScenario testScenario = new TestScenario();
+        Author author = new Author();
+
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
 
         //when
         testsSuite.add(testScenario, author);
