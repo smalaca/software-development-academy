@@ -20,11 +20,10 @@ public class TestsSuiteTest {
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
         //given author with priviliges
         AuthorAccess authorAccess = Mockito.mock(AuthorAccess.class);
-        BDDMockito.given(authorAccess.hasPriviliges(ArgumentMatchers.any())).willReturn(true);
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
         Author author = new Author();
         //given map to store scenarios and authors
         Map<Author, TestScenario> testScenarios = new HashMap<>();
-
         //given tests suite
         TestsSuite testsSuite = new TestsSuite(validator, authorAccess, testScenarios);
 
@@ -34,5 +33,28 @@ public class TestsSuiteTest {
         //then
         Assert.assertTrue(testScenarios.containsKey(author));
         Assert.assertTrue(testScenarios.containsValue(testScenario));
+    }
+
+    @Test
+    public void shouldNotAddTestScenarioWhenAuthorHasNoPrivileges() {
+        //given
+        //given correct test scenario
+        TestScenario testScenario = new TestScenario();
+        TestScenarioValidator validator = Mockito.mock(TestScenarioValidator.class);
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
+        //given author with priviliges
+        AuthorAccess authorAccess = Mockito.mock(AuthorAccess.class);
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
+        Author author = new Author();
+        //given map to store scenarios and authors
+        Map<Author, TestScenario> testScenarios = new HashMap<>();
+        //given tests suite
+        TestsSuite testsSuite = new TestsSuite(validator, authorAccess, testScenarios);
+
+        //when
+        testsSuite.add(testScenario, author);
+
+        //then
+        Assert.assertTrue(testScenarios.isEmpty());
     }
 }
