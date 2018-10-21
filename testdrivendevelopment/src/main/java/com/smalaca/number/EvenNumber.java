@@ -1,11 +1,13 @@
 package com.smalaca.number;
 
 class EvenNumber {
-    EvenNumber(int number) {
+    private final int number;
 
+    EvenNumber(int number) {
+        this.number = number;
     }
 
     boolean isEven() {
-        return true;
+        return number % 2 == 0;
     }
 }

@@ -16,4 +16,17 @@ public class EvenNumberTest {
         //then
         Assert.assertTrue(isEven);
     }
+
+    @Test
+    public void shouldRecognizeWhenNumberIsOdd() {
+        //given
+        int number = 1;
+        EvenNumber evenNumber = new EvenNumber(number);
+
+        //when
+        boolean isEven = evenNumber.isEven();
+
+        //then
+        Assert.assertFalse(isEven);
+    }
 }
