@@ -13,6 +13,7 @@ import java.util.Map;
 public class TestsSuiteTest {
     private static final TestScenario TEST_SCENARIO = new TestScenario();
     private static final Author AUTHOR = new Author();
+
     private TestsSuite testsSuite;
     private Map<Author, TestScenario> testScenarios;
     private AuthorAccess authorAccess;
@@ -45,6 +46,19 @@ public class TestsSuiteTest {
         //given
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
+
+        //when
+        testsSuite.add(TEST_SCENARIO, AUTHOR);
+
+        //then
+        Assert.assertTrue(testScenarios.isEmpty());
+    }
+
+    @Test
+    public void shouldNotAddTestScenarioWhenTestScenarioIsNotCorrect() {
+        //given
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(false);
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
 
         //when
         testsSuite.add(TEST_SCENARIO, AUTHOR);
