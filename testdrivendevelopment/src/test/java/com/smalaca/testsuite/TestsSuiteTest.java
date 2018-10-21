@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TestsSuiteTest {
-    private static final TestScenario TEST_SCENARIO = new TestScenario();
-    private static final Author AUTHOR = new Author();
+    private static final TestScenario DUMMY_TEST_SCENARIO = null;
+    private static final Author DUMMY_AUTHOR = null;
 
     private TestsSuite testsSuite;
     private Map<Author, TestScenario> testScenarios;
@@ -34,11 +34,11 @@ public class TestsSuiteTest {
         givenAuthorWithPrivileges();
 
         //when
-        testsSuite.add(TEST_SCENARIO, AUTHOR);
+        testsSuite.add(DUMMY_TEST_SCENARIO, DUMMY_AUTHOR);
 
         //then
-        Assert.assertTrue(testScenarios.containsKey(AUTHOR));
-        Assert.assertTrue(testScenarios.containsValue(TEST_SCENARIO));
+        Assert.assertTrue(testScenarios.containsKey(DUMMY_AUTHOR));
+        Assert.assertTrue(testScenarios.containsValue(DUMMY_TEST_SCENARIO));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TestsSuiteTest {
         givenAuthorHasNoPrivileges();
 
         //when
-        testsSuite.add(TEST_SCENARIO, AUTHOR);
+        testsSuite.add(DUMMY_TEST_SCENARIO, DUMMY_AUTHOR);
 
         //then
         Assert.assertTrue(testScenarios.isEmpty());
@@ -69,7 +69,7 @@ public class TestsSuiteTest {
         givenAuthorWithPrivileges();
 
         //when
-        testsSuite.add(TEST_SCENARIO, AUTHOR);
+        testsSuite.add(DUMMY_TEST_SCENARIO, DUMMY_AUTHOR);
 
         //then
         Assert.assertTrue(testScenarios.isEmpty());
