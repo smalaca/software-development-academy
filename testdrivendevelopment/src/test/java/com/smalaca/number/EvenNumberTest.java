@@ -17,16 +17,12 @@ public class EvenNumberTest {
         Assert.assertTrue(isEven);
     }
 
-    @Test
+    @Test(expected = NotEvenNumberException.class)
     public void shouldRecognizeWhenNumberIsOdd() {
         //given
         int number = 1;
-        EvenNumber evenNumber = new EvenNumber(number);
 
         //when
-        boolean isEven = evenNumber.isEven();
-
-        //then
-        Assert.assertFalse(isEven);
+        new EvenNumber(number);
     }
 }
