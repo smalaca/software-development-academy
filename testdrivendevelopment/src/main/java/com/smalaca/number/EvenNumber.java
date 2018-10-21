@@ -5,7 +5,7 @@ class EvenNumber {
 
     EvenNumber(int number) {
         if (isOdd(number)){
-            throw new NotEvenNumberException();
+            throw new NotEvenNumberException(number);
         }
 
         this.number = number;
