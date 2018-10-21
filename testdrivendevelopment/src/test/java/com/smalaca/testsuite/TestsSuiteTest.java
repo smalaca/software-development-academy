@@ -30,8 +30,8 @@ public class TestsSuiteTest {
     @Test
     public void shouldAddTestScenario() {
         //given
-        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
-        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
+        givenCorrectTestScenario();
+        givenAuthorWithPrivileges();
 
         //when
         testsSuite.add(TEST_SCENARIO, AUTHOR);
@@ -44,8 +44,8 @@ public class TestsSuiteTest {
     @Test
     public void shouldNotAddTestScenarioWhenAuthorHasNoPrivileges() {
         //given
-        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
-        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
+        givenCorrectTestScenario();
+        givenAuthorHasNoPrivileges();
 
         //when
         testsSuite.add(TEST_SCENARIO, AUTHOR);
@@ -54,16 +54,32 @@ public class TestsSuiteTest {
         Assert.assertTrue(testScenarios.isEmpty());
     }
 
+    private void givenAuthorHasNoPrivileges() {
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(false);
+    }
+
+    private void givenCorrectTestScenario() {
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(true);
+    }
+
     @Test
     public void shouldNotAddTestScenarioWhenTestScenarioIsNotCorrect() {
         //given
-        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(false);
-        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
+        givenIncorrectTestScenario();
+        givenAuthorWithPrivileges();
 
         //when
         testsSuite.add(TEST_SCENARIO, AUTHOR);
 
         //then
         Assert.assertTrue(testScenarios.isEmpty());
+    }
+
+    private void givenIncorrectTestScenario() {
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any())).willReturn(false);
+    }
+
+    private void givenAuthorWithPrivileges() {
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any())).willReturn(true);
     }
 }
