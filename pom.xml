@@ -11,6 +11,5 @@
 
     <modules>
         <module>testdrivendevelopment</module>
-        <module>test</module>
     </modules>
 </project>
